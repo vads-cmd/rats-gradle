@@ -21,17 +21,19 @@ In this case, you need to add dependencies from gradle.build file to your projec
 After performing dummy tests and checking structure of a boilerplate, you may delete all packages and classes marked "Dummy*".
 
 ## List of tools
-Testing Framework - TestNG 6.14.3 - [](https://testng.org/)https://testng.org/
+Testing Framework - TestNG 6.14.3 - https://testng.org/
 
-REST library - REST Assured 3.3.0 - [](http://rest-assured.io/)http://rest-assured.io/
+REST library - REST Assured 3.3.0 - http://rest-assured.io/
 
-HTTP client - Apache HTTPComponents 4.5.7 - [](http://hc.apache.org/)http://hc.apache.org/
+HTTP client - Apache HTTPComponents 4.5.7 - http://hc.apache.org/
 
-JSON Instrument - GSON 2.8.5 - [](https://github.com/google/gson)https://github.com/google/gson 
+JSON Instrument - GSON 2.8.5 - https://github.com/google/gson 
 
-Fake Data Generator - Java Faker 0.17.2 - [](https://github.com/DiUS/java-faker)https://github.com/DiUS/java-faker
+Fake Data Generator - Java Faker 0.17.2 - https://github.com/DiUS/java-faker
 
-Logging tool - Logback 1.2.3 - [](https://logback.qos.ch/)https://logback.qos.ch/
+Logging tool - Logback 1.2.3 - https://logback.qos.ch/
 
-Results visualization tool - Allure 2.7.0 - [](http://allure.qatools.ru/)http://allure.qatools.ru/
+Results visualization tool - Allure 2.7.0 - http://allure.qatools.ru/
+
+List of naughty strings for data generation - https://github.com/minimaxir/big-list-of-naughty-strings
 
