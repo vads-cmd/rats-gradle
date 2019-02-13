@@ -16,7 +16,7 @@ public class DummyTest extends TestBase {
     public void testGetUsers() {
         RestResponse response = app.get("/api/users");
 
-        DummyGetListUsers responseData = gson.fromJson(response.body(), DummyGetListUsers.class);git
+        DummyGetListUsers responseData = gson.fromJson(response.body(), DummyGetListUsers.class);
 
         assertEquals(response.statusCode(), 200);
         assertEquals(responseData.getTotalPages(), 4 );
