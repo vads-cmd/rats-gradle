@@ -1,0 +1,46 @@
+plugins {
+    id "java"
+    id "io.qameta.allure" version "2.5"
+}
+
+group 'RATS-gradle'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.testng:testng:6.14.3'
+    implementation 'io.rest-assured:rest-assured:3.3.0'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.7'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.github.javafaker:javafaker:0.17.2'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'io.qameta.allure:allure-gradle:2.7.0'
+    implementation 'joda-time:joda-time:2.10.1'
+}
+
+test {
+    useTestNG()
+
+    systemProperty 'allure.model.indentOutput', true
+    systemProperty 'allure.results.directory', 'build/allure-results'
+    systemProperty 'allure.link.issue.pattern', 'https://github.com/allure-framework/allure-docs/issues/{}'
+    systemProperty 'allure.link.tms.pattern', 'https://github.com/allure-framework/allure-docs/issues/{}'
+}
+
+allure {
+    autoconfigure = true
+    version = '2.9.0'
+    useTestNG {
+        version = '6.14.3'
+    }
+}
+
+
+
+
