@@ -2,7 +2,7 @@ package org.tests.rats.tests;
 
 import com.google.gson.JsonObject;
 import org.testng.annotations.Test;
-import org.tests.rats.models.*;
+import org.tests.rats.models.Dummy.*;
 import org.tests.rats.workers.RestResponse;
 
 import static org.testng.Assert.assertEquals;

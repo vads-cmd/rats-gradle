@@ -1,4 +1,4 @@
-package org.tests.rats.models;
+package org.tests.rats.models.Dummy;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

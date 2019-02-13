@@ -1,4 +1,4 @@
-package org.tests.rats.models;
+package org.tests.rats.models.Dummy;
 
 
 import com.google.gson.annotations.Expose;
@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class DummyPatchUpdate {
+public class DummyPutUpdate {
 
     @SerializedName("name")
     @Expose
@@ -58,10 +58,10 @@ public class DummyPatchUpdate {
         if (other == this) {
             return true;
         }
-        if ((other instanceof DummyPatchUpdate) == false) {
+        if ((other instanceof DummyPutUpdate) == false) {
             return false;
         }
-        DummyPatchUpdate rhs = ((DummyPatchUpdate) other);
+        DummyPutUpdate rhs = ((DummyPutUpdate) other);
         return new EqualsBuilder().append(updatedAt, rhs.updatedAt).append(name, rhs.name).append(job, rhs.job).isEquals();
     }
 }
