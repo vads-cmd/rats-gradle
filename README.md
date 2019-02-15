@@ -50,7 +50,7 @@ Next Step is to create a new test in tests folder. This test must extend TestBas
 
 Creating test consists of several steps
 
- 1. *Optional for sending data* Creating a new object and adding parameters that we will need to send to server via request:
+ 1. *(Optional for sending data)* Creating a new object and adding parameters that we will need to send to server via request:
  
 *DummyPostCreate requestData = new DummyPostCreate();  
 requestData.setName(fullName());  
