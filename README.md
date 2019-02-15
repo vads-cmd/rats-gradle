@@ -46,32 +46,42 @@ All Dummy tests are performed using https://reqres.in/
 
 First of all, you will need to create a **pojo** (plain old java object) with properties and methods to manipulate responses. Use server response or JSON schema. Use http://jsonschema2pojo.org with settings for generating this object for Gson library. Do not forget to include equals() and hashCode() methods. Put created pojo into models folder.
 
-Next Step is to create a new test in tests folder. This text must extend TestBase class for using http requests library and logger. 
+Next Step is to create a new test in tests folder. This test must extend TestBase class for using http requests library and logger. 
 
 Creating test consists of several steps
 
  1. *Optional for sending data* Creating a new object and adding parameters that we will need to send to server via request:
+ 
 *DummyPostCreate requestData = new DummyPostCreate();  
 requestData.setName(fullName());  
 requestData.setJob(occupation());*
+
 For parameters we may use fake data objects.
 After that let's create a JSON with these parameters:
+
 *JsonObject params = new JsonObject();  
 params.addProperty("name", requestData.getName());  
 params.addProperty("job", requestData.getJob());*
+
  2. Now we can send request to server and parse response body to another object:
+ 
  *RestResponse response = app.post("/api/users", params);  
 DummyPostCreate responseData = gson.fromJson(response.body(), DummyPostCreate.class);*
+
 Fail of test on this step means that response uses wrong JSON Schema and body cannot be parsed to our object.
+
  3. Perform Assertions:
+ 
  *assertEquals(response.statusCode(), 201);  
 assertEquals(responseData.getName(), requestData.getName());  
 assertEquals(responseData.getJob(), requestData.getJob());*
 
 ## Request methods
 All requests can be performed both with and without JSON body.
+
 *app.%methodName%("%endpoint%")* or
 *app.%methodName%("%endpoint%", params)*
+
 Currently RATS supports next HTTP Methods:
 
  - GET
