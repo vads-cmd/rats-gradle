@@ -1,5 +1,6 @@
 # RATS-Gradle
 Rest Automation Testing Suit. Gradle version
+v.1.0.0
 
 ## Introduction
 
@@ -36,4 +37,83 @@ Logging tool - Logback 1.2.3 - https://logback.qos.ch/
 Results visualization tool - Allure 2.7.0 - http://allure.qatools.ru/
 
 List of naughty strings for data generation - https://github.com/minimaxir/big-list-of-naughty-strings
+
+## Usage
+For low-level tests you may use simple requests provided by rest-assured.io library.
+For high-level tests you need to create a special structure for your tests.
+
+All Dummy tests are performed using https://reqres.in/
+
+First of all, you will need to create a **pojo** (plain old java object) with properties and methods to manipulate responses. Use server response or JSON schema. Use http://jsonschema2pojo.org with settings for generating this object for Gson library. Do not forget to include equals() and hashCode() methods. Put created pojo into models folder.
+
+Next Step is to create a new test in tests folder. This text must extend TestBase class for using http requests library and logger. 
+
+Creating test consists of several steps
+
+ 1. *Optional for sending data* Creating a new object and adding parameters that we will need to send to server via request:
+*DummyPostCreate requestData = new DummyPostCreate();  
+requestData.setName(fullName());  
+requestData.setJob(occupation());*
+For parameters we may use fake data objects.
+After that let's create a JSON with these parameters:
+*JsonObject params = new JsonObject();  
+params.addProperty("name", requestData.getName());  
+params.addProperty("job", requestData.getJob());*
+ 2. Now we can send request to server and parse response body to another object:
+ *RestResponse response = app.post("/api/users", params);  
+DummyPostCreate responseData = gson.fromJson(response.body(), DummyPostCreate.class);*
+Fail of test on this step means that response uses wrong JSON Schema and body cannot be parsed to our object.
+ 3. Perform Assertions:
+ *assertEquals(response.statusCode(), 201);  
+assertEquals(responseData.getName(), requestData.getName());  
+assertEquals(responseData.getJob(), requestData.getJob());*
+
+## Request methods
+All requests can be performed both with and without JSON body.
+*app.%methodName%("%endpoint%")* or
+*app.%methodName%("%endpoint%", params)*
+Currently RATS supports next HTTP Methods:
+
+ - GET
+ - POST
+ - PUT
+ - PATCH
+ - DELETE
+
+## Fake data
+You can use fake data for generation of data for objects and requests. Fake data methods are **static** so you can create this data without creating an instance of JavaFaker object. 
+
+Currently supported methods:
+
+ - firstName()
+ - lastName()
+ - fullName()
+ - age() - from 1 to 100
+ - email()
+ - url()
+ - password() from 6 to 8 symbols
+ - country()
+ - counrtyCode() - 3 symbols
+ - city()
+ - street()
+ - house()
+ - occupation()
+ - date()
+ - company()
+ - randomNumber() - from 0 to 2147483647
+ - negativeRandomNumber() - from -2147483647 to -1
+ - naughtyString() - list of strings that may cause problems
+ - naughtyString64() - list of strings that may cause problems in 64 bit format
+
+## Log files and reports
+For logging RATS uses Logback. All logs are put into log directory in the root of RATS project folder. Logging levels for terminal and log file is [INFO]. Log levels and additional settings can be changed in src/test/recourses/logback.xml file 
+
+For reporting tool RATS uses Allure2. To run allure server type 
+*./gradlew allureServe build/allure-results*
+See Allure2 documentation for more options and information
+
+## Version info
+14.02.2019 - 1.0.0 - Initial commit.
+
+
 
