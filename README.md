@@ -1,5 +1,6 @@
 # RATS-Gradle
-Rest Automation Testing Suit. Gradle version. /n
+Rest Automation Testing Suit. Gradle version.
+
 v.1.0.0
 
 ## Introduction
