@@ -65,8 +65,11 @@ params.addProperty("job", requestData.getJob());*
 
  2. Now we can send request to server and parse response body to another object:
  
- *RestResponse response = app.post("/api/users", params);  
-DummyPostCreate responseData = gson.fromJson(response.body(), DummyPostCreate.class);*
+ *RestResponse response = app.post("/api/users", params);*
+ 
+ Response is split into statusCode, headers and body properties. They can be parsed to different objects if nessesary:
+
+*DummyPostCreate responseData = gson.fromJson(response.body(), DummyPostCreate.class);*
 
 Fail of test on this step means that response uses wrong JSON Schema and body cannot be parsed to our object.
 
