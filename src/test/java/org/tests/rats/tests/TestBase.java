@@ -21,13 +21,8 @@ public class TestBase {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void logStop(Method method){
+    public void logStop(Method method) {
         logger.info("Finish test " + method.getName());
-        try {
-            Thread.sleep(app.pauseTimer);
-        } catch(InterruptedException e){
-            return;
-        }
     }
 
 }
